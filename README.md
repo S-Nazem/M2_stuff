@@ -38,8 +38,8 @@ M2_STUFF/
 ├── qwen.py                      # Script for loading Qwen2.5-Instruct via HuggingFace
 │
 ├── M2_coursework.pdf            # Coursework instructions
-├── M2___LLM_Forecasting.pdf     # Final report (main.pdf)
-└── README.md                    # You're here!
+├── Report.pdf     # Final report (main.pdf)
+└── README.md                    # README
 ```
 
 ---

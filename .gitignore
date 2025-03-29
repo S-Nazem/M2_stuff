@@ -6,12 +6,7 @@ models/
 
 .vscode/
 
-
 coursework/
-
-*.h5
-
-*.pdf
 
 .DS_Store
 
