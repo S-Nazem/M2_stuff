@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch
 
-# ✅ LoRA Implementation
+# LoRA Implementation
 class LoRALinear(nn.Module):
     def __init__(self, original_linear: nn.Linear, r: int, alpha: int = None):
         super().__init__()
@@ -20,7 +20,7 @@ class LoRALinear(nn.Module):
         self.A = nn.Parameter(torch.empty(r, in_dim, device=device))
         self.B = nn.Parameter(torch.zeros(out_dim, r, device=device))  # ✅ Fixed initialization
 
-        # ✅ Use He initialization for A
+        # Use He initialization for A
         nn.init.kaiming_normal_(self.A, nonlinearity="linear")
 
     def forward(self, x):

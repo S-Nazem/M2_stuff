@@ -13,8 +13,6 @@ def parse_decoded_output(decoded_str, scale_factor=10):
     except ValueError:
         return np.zeros((40, 2))
     
-
-
     
 def run_prediction(model, tokenizer, input_tensor, num_runs):
     model.eval()
@@ -23,7 +21,7 @@ def run_prediction(model, tokenizer, input_tensor, num_runs):
 
     with torch.no_grad():
         for _ in range(num_runs):
-            output_tokens = model.generate(input_tensor, attention_mask=attention_mask, max_new_tokens=1100, min_length=1000)
+            output_tokens = model.generate(input_tensor, attention_mask=attention_mask, do_sample = False, max_new_tokens=1100, min_length=1000)
             generated_tokens = output_tokens[0].tolist()[len(input_tensor[0]):]
             decoded_output = tokenizer.decode(generated_tokens, skip_special_tokens=True)
             prediction = parse_decoded_output(decoded_output)
@@ -53,7 +51,7 @@ def compute_convergence_speed(train_loss_csv):
 
 
 
-# ✅ Tokenize dataset with sliding windows
+# Tokenize dataset with sliding windows
 def process_sequences(texts, tokenizer, max_length=512, stride=256):
     all_input_ids = []
     for text in texts:
