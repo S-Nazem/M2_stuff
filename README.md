@@ -135,3 +135,12 @@ From our final model (LoRA rank = 8, LR = 1e-4, context = 256):
 ## License
 
 This repository is part of a university coursework submission and is not intended for public distribution or reuse.
+
+
+---
+
+## Use of Generative AI
+
+- I used Github's Copilot to help me automatically finish off some code blocks and also to quickly docstring my functions.
+
+- I used LLMs (ChatGPT) to help me create professional looking plots and occasionally to help me debug errors when i implemented something incorrectly.
