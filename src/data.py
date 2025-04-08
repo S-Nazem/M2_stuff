@@ -3,32 +3,41 @@ import numpy as np
 import torch
 import pandas as pd
 
-def parse_decoded_output(decoded_str, scale_factor=10):
+def extract_numerical_values(decoded_string):
     try:
-        parsed_data = np.array([
-            list(map(float, pair.split(",")))
-            for pair in decoded_str.split(";") if "," in pair
+        parsed_array = np.array([
+            list(map(float, item.split(",")))
+            for item in decoded_string.split(";") if "," in item
         ])
-        return parsed_data[:40] * scale_factor if parsed_data.shape[0] >= 40 else np.zeros((40, 2))
+        if parsed_array.shape[0] >= 40:
+            return parsed_array[:40] * 10
+        else:
+            return np.zeros((40, 2))
     except ValueError:
         return np.zeros((40, 2))
-    
-    
-def run_prediction(model, tokenizer, input_tensor, num_runs):
+
+
+def run_forecast(model, tokenizer, input_ids, iterations):
     model.eval()
-    predictions = []
-    attention_mask = (input_tensor != tokenizer.pad_token_id).long()
+    all_outputs = []
+    mask = (input_ids != tokenizer.pad_token_id).long()
 
     with torch.no_grad():
-        for _ in range(num_runs):
-            output_tokens = model.generate(input_tensor, attention_mask=attention_mask, do_sample = False, max_new_tokens=1100, min_length=1000)
-            generated_tokens = output_tokens[0].tolist()[len(input_tensor[0]):]
-            decoded_output = tokenizer.decode(generated_tokens, skip_special_tokens=True)
-            prediction = parse_decoded_output(decoded_output)
-            predictions.append(prediction)
-    predictions = np.array(predictions)
-    return np.mean(predictions, axis=0) if num_runs > 1 else predictions[0]
+        for _ in range(iterations):
+            generated = model.generate(
+                input_ids,
+                attention_mask=mask,
+                do_sample=False,
+                max_new_tokens=1100,
+                min_length=1000
+            )
+            new_tokens = generated[0].tolist()[len(input_ids[0]):]
+            decoded_text = tokenizer.decode(new_tokens, skip_special_tokens=True)
+            numeric_values = extract_numerical_values(decoded_text)
+            all_outputs.append(numeric_values)
 
+    all_outputs = np.array(all_outputs)
+    return np.mean(all_outputs, axis=0) if iterations > 1 else all_outputs[0]
 
 
 
