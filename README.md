@@ -20,15 +20,12 @@ Our results demonstrate that with efficient fine-tuning and thoughtful hyperpara
 
 ```plaintext
 M2_STUFF/
-├── coursework/                  # (Optional) Coursework notes or helper scripts
 ├── csv/                         # Exported data or intermediate CSVs
-├── notebooks/                   # Jupyter notebooks for development and analysis
+├── notebooks/                   # Clean Jupyter notebooks for results/analysis
 ├── plots/                       # Output plots and figures for forecasts/results
 ├── sn665/                       # (Optional) user-specific or submission directory
 ├── src/                         # Python source code
-│   └── preprocessor.py          # LLMTIME preprocessing implementation
-│
-├── dev.ipynb                    # Development notebook (forecasting & experiments)
+├── Development.ipynb            # Very rough dev workflow (kept for interest)
 ├── lora_skeleton.py             # Training script extended with LoRA
 ├── lotka_volterra_data.h5       # Provided predator-prey dataset
 │
@@ -37,7 +34,7 @@ M2_STUFF/
 ├── qwen.py                      # Script for loading Qwen2.5-Instruct via HuggingFace
 │
 ├── M2_coursework.pdf            # Coursework instructions
-├── Report.pdf     # Final report (main.pdf)
+├── Report.pdf                   # Final report
 └── README.md                    # README
 ```
 
