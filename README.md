@@ -3,7 +3,6 @@
 **Author**: Saam Nazempour (sn665)  
 **Course**: MPhil in Data Intensive Science – M2 Coursework  
 **Supervisor**: Dr. Miles Cranmer  
-**Submission Deadline**: April 4, 2025
 
 ---
 
