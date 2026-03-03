@@ -14,7 +14,7 @@ class LLMTIMEPreprocessor:
         self.scale_factor = scale_factor
         self.decimal_places = decimal_places
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-
+        
     def preprocess_sequence(self, sequence):
         """
         Preprocesses a single time series sequence for LLMTIME tokenization.
