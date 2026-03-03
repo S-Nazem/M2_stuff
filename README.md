@@ -18,7 +18,7 @@ Our results demonstrate that with efficient fine-tuning and thoughtful hyperpara
 
 # 📄 Read the Full Report
 
-**[Click here to view the PDF](.Report.pdf)**
+**[Click here to view the PDF](Report.pdf)**
 
 ---
 
